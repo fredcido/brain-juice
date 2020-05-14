@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "DEBUG=backend:* node ./bin/www",
+    "dev": "DEBUG=backend:* nodemon --inspect --watch src --exec npm run start"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "lowdb": "^1.0.0",
+    "morgan": "~1.9.0",
+    "nodemon": "^2.0.3",
+    "shortid": "^2.2.15",
+    "socket.io": "^2.3.0"
+  }
+}
