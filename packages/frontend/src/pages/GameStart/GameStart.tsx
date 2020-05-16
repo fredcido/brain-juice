@@ -1,60 +1,43 @@
-import React, { useState, useContext } from "react";
-import Avatar from "@material-ui/core/Avatar";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
-import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Alert from '@material-ui/lab/Alert';
+import { useHistory } from "react-router-dom";
 
-import State from '../../state';
-
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+import Card from '../../components/Card';
+import useStyles from './style';
+import * as service from '../../services/game';
 
 export default function GameStart() {
-  const { setState } = useContext(State);
+  const history = useHistory();
   const classes = useStyles();
-  const [data, setData] = useState({ name:  '' });
+  const [data, setData] = useState({ name: '' });
+  const [isSaving, setIsSaving] = useState(false);
+  const [error, setError] = useState('');
 
   const handleInputChange = (event: React.SyntheticEvent) => {
     const { name, value } = event.target as HTMLInputElement;
-    setData({...data, [name]: value})
+    setData({ ...data, [name]: value })
   }
 
   const handleFormSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    setState({
-      game: data.name,
+    if (!data.name) return;
+
+    setIsSaving(true);
+
+    service.add(data).then(game => {
+      setIsSaving(false);
+      history.push(`/game/${game.id}`);
+    }).catch(() => {
+      setIsSaving(false);
+      setError('There was something wrong when starting the game');
     })
   };
 
   return (
-    <div className={classes.paper}>
-      <Avatar className={classes.avatar}>
-        <SportsEsportsIcon />
-      </Avatar>
-      <Typography component="h1" variant="h5">
-        Starts a new game
-      </Typography>
+    <Card title="Starts a new game">
       <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
         <TextField
           variant="outlined"
@@ -64,6 +47,7 @@ export default function GameStart() {
           id="name"
           label="Game name"
           name="name"
+          error={!Boolean(data.name)}
           value={data.name}
           onChange={handleInputChange}
           autoFocus
@@ -74,11 +58,17 @@ export default function GameStart() {
           variant="contained"
           color="primary"
           className={classes.submit}
+          disabled={isSaving}
         >
           Start game
         </Button>
-        <Link to="/waiting">Waiting</Link>
+        {error && (
+          <Alert severity="error">
+            {error}
+          </Alert>
+        )}
+        {isSaving && <LinearProgress variant="query" />}
       </form>
-    </div>
+    </Card>
   );
 }

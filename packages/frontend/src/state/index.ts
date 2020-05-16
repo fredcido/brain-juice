@@ -13,7 +13,10 @@ interface StateSetter {
   setState(newState: GlobalState): void;
 }
 
-const Context = React.createContext<StateSetter>({ state: initialState });
+const Context = React.createContext<StateSetter>({
+  state: initialState,
+  setState: s => s,
+});
 
 export {
   initialState,

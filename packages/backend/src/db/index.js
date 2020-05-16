@@ -20,7 +20,8 @@ const initDb = async () => {
 const getRepository = (TABLE) => {
   const add = async (data) => {
     await initDb();
-    return db.get(TABLE).push(data).write();
+    await db.get(TABLE).push(data).write();
+    return get(data.id);
   };
   
   const edit = async (id, data) => {

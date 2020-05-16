@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,27 +8,14 @@ import {
 } from "react-router-dom";
 
 import TopBar from '../TopBar';
+
+// Pages
 import GameStart from '../../pages/GameStart';
 import Game from '../../pages/Game';
-import WaitingRoom from '../../pages/WaitingRoom/index';
+import Home from '../../pages/Home';
 
 import GlobalState from '../../models/GlobalState';
 import { Context as StateContext, initialState } from '../../state';
-
-const players = [
-  {
-    name: 'Fred',
-  },
-  {
-    name: 'Klass',
-  },
-  {
-    name: 'Laura',
-  },
-  {
-    name: 'Misa',
-  }
-];
 
 export default function App() {
   const [state, setGlobalState] = useState<GlobalState>(initialState);
@@ -45,19 +32,19 @@ export default function App() {
       <StateContext.Provider value={{ setState, state }}>
         <CssBaseline />
         <TopBar />
-        <Container>
+        <Box>
           <Switch>
-            <Route path="/waiting">
-              <WaitingRoom players={players} />
-            </Route>
-            <Route path="/game">
+            <Route path="/game/:id">
               <Game />
             </Route>
-            <Route path="/">
+            <Route path="/start">
               <GameStart />
             </Route>
+            <Route path="/">
+              <Home />
+            </Route>
           </Switch>
-        </Container>
+        </Box>
       </StateContext.Provider>
     </Router>
   );

@@ -6,7 +6,8 @@
 
 const debug = require('debug')('backend:server');
 const http = require('http');
-const app = require('../src/app')(app);
+const app = require('../src/app')
+const { register } = require('../src/events');
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,9 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
+
+// Register events
+register(server);
 
 /**
  * Listen on provided port, on all network interfaces.
