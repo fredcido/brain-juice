@@ -1,0 +1,202 @@
+SCREEN 1:
+This sets out that something is shown on a screen (desktop / tablet) and on a phone (iOS, Android)
+
+
+
+SCREEN 2: 
+
+<<Screen>>
+Pre requisite for someone being able to play the game is that they have signed up and premium access on their account
+If the case and going to this game the person can start a new game by generating a room number
+
+<<Phone>>
+On the phone any player who want to join needs to submit their players name (user name / nick name) and the unique room number
+
+[NOTE: Any room numbers will expire after 1 hour]
+
+
+
+SCREEN 3:
+
+<<Screen>>
+On the right side a gif / video / picture is displayed
+On the left side the list of players will filled up with those that are joining the game. 
+A maximum of 6 players can play the game at once.
+Additional player, will automatically join the audience and will be able to vote later on in the game. 
+The number of people in the audience will show in a seperate box below the list of players.
+
+<<Phone>>
+The phone will display a picture and text saying something like. Just Sit back and relax
+
+
+
+SCREEN 4:
+
+<<Screen>>
+Game play is displayed:
+
+Game play: 
+The objective of this game is to practice the behaviors and thinking of the empathize and ideate phases of design thinking. 
+The purpose is to have game players brainstorm innovative ideas by looking at objects in different perspectives and thinking beyond the obvious. 
+
+The game is based on the concept of disruptive thinking to look at an object and coming up with an entirely different way to achieve the same end.
+
+This game encourage wild ideas and players are voting on eachothers ideas on usability and creativity
+
+There are 4 steps in this game:
+
+(1) In this step the spinning wheel is turned that features four different ways on approaching innovation:
+	(1) Boost it 	-	In this case one card will be drawn from the deck.
+				Players are to add or change one or more elements depicted on the card to improve the ojbect or idea.
+				Players can draw the improvement and describe it in 250 characters
+	(2) Mutate	-	In this case one card will be drawn from the deck.
+				Players are to use the object on the card for a different purpose
+				Players can draw the new purpose and describe it in 250 characters
+	(3) Merge it	- 	In this case two cards will be drawn from the deck. 
+				Players are to pick items or parts from each picture and create a new object. 
+				Players can draw the new object and describe it in 250 characters
+	(4) Disrupt	-	In this case one card will be drawn from the deck.
+				Players are to come up with a completely different way (object) to achieve the same purpose of the object.
+				Players can draw the new object and describe it in 250 characters
+
+(2) In this step the card(s) are drawn from the deck and displayed
+(3) The players have 5 minutes to draw and type their solutions
+(4) After all players submitted their solutions, it is voting time. There are 2 votes that can be casted
+	(1) Most usable solution 
+	(2) Most crazy / funky out of the box solution
+
+In total their are 3 round and after each voting round the leaderboard is shown ranked based on Most Usable Solution votes received.
+
+After the final round the players their names are shown scattered and the player with most "Most usable solution" votes is highlighted (bigger font) 
+and the player with the "most crazy / funky out of the box solution" votes is highlighted (bigger font)
+
+[NOTE: A picture will be created showing above the HOW TO PLAY and RULES, which can be placed in the screen.]
+
+<<Phone>>
+The phone will display a picture and text saying something like. Just Sit back and relax
+
+
+
+
+SCREEN 5:
+
+<<Screen>>
+It is time to spin the wheel. The wheel spins and lands on one of the four different ways on approaching innovation
+The name of the players will show at the bottom of the screen as will the number of people in the audience
+
+<<Phone>> 
+The phone will display a picture and text saying something like. Just Sit back and relax
+
+
+
+SCREEN 6:
+
+<<Screen>>
+On the left side of the screen the wheel spins innovation way is shown.
+On the middle / right side of the screen the object of the card(s) drawn from the deck are being revealed
+The name of the players will show at the bottom of the screen as will the number of people in the audience
+
+<<Phone>> 
+The phone will display a picture and text saying something like. Just Sit back and relax
+
+
+
+
+SCREEN 7:
+
+<<Screen>>
+At the top a countdown bar, which length is continiously decreasing.
+On the left side of the screen the wheel spins innovation way is shown.
+On the middle / right side of the screen the object of the card(s) drawn from the deck is shown
+The name of the players will show at the bottom of the screen as will the number of people in the audience
+Whenever a player submits their solution their name is highlighted (so all feel more pressure)
+
+<<Phone>> 
+Players are now able to draw their solution and describe it in 250 characters, after which they can submit it.
+
+[NOTE: After max 5 minutes, if no solution has been submitted all automatically move on to screen 8
+
+
+
+SCREEN 8:
+
+<<Screen>>
+On the left side of the screen at the top the wheel spins' innovation way is shown.
+Below it the object(s) of the card(s) drawn from the deck is shown.
+On the middle / right side of the screen the solutions  are shown, including a symbol. 
+The name of the players will show at the bottom of the screen as will the number of people in the audience
+
+[NOTE: Solutions shown are in random order, without players and audience knowing who submitted which solution]
+
+<<Phone>> 
+The phone will display the symbols referring to each solution (e.g a triangle, a square, a circle, a cross, a pentagon and a star)
+Players and audience can now cast their vote for the "Most usable solution"
+
+
+
+SCREEN 9: 
+ 
+<<Screen>>
+On the left side of the screen at the top the wheel spins' innovation way is shown.
+Below it the object(s) of the card(s) drawn from the deck is shown.
+On the middle / right side of the screen the solutions are shown, including a symbol. 
+The name of the players will show at the bottom of the screen as will the number of people in the audience
+
+[NOTE: Solutions shown are in random order, without players and audience knowing who submitted which solution]
+
+<<Phone>> 
+The phone will display the symbols referring to each solution (e.g a triangle, a square, a circle, a cross, a pentagon and a star)
+Players and audience can now cast their vote for the "Most crazy / funky out of the box solution"
+
+
+SCREEN 10:
+
+<<Screen>>
+On the left side of the screen at the top the wheel spins' innovation way is shown.
+Below it the object(s) of the card(s) drawn from the deck is shown.
+On the middle / right side of the screen the solutions are shown, including a symbol. 
+The name of the players are now revealed under each of the solutions
+
+
+<<Phone>> 
+The phone will display a picture and text saying something like. Just Sit back and relax
+
+
+
+SCREEN 11:
+
+<<Screen>>
+The leaderboard is shown (text should show something like: Leaderboard after the 1st round)
+On the left the ranking number is shown, next to it the name of the player, next to it the number of votes for the "Most usable solution".
+
+
+<<Phone>> 
+The phone will display a picture and text saying something like. Just Sit back and relax
+
+
+
+SCREEN 12:
+
+<<Screen>>
+The final leaderboard is shown (text should show something like: Final Leaderboard champions)
+The names of the players appear scatterd on the screen.
+The players with most "Most usable solution" votes is highlighted (bigger font) 
+The player with the "most crazy / funky out of the box solution" votes is highlighted (bigger font)
+
+[NOTE: the reveal of player with the "most crazy / funky out of the box solution" votes is only revealed now, to make players wonder during the game if they are winning this one]
+
+<<Phone>> 
+The phone will display a picture and text saying something like. Just Sit back and relax
+
+
+
+
+
+
+
+
+
+
+
+
+
