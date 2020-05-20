@@ -5,6 +5,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import { useParams } from "react-router";
 import io from 'socket.io-client';
 
+import config from '../../helpers/config';
 import Player from '../../models/Player';
 import Game from '../../models/Game';
 import useStyles from './style';
@@ -14,15 +15,14 @@ import GameRoom from './GameRoom';
 
 const EVENTS = {
   PLAYER_CONNECT: 'player-connected',
+  PLAYER_DISCONNECT: 'player-disconnected',
   PLAYERS: 'players',
   JOIN: 'join',
+  LEAVE: 'leave',
   GAME_START: 'game-start',
 };
 
-// TODO Consume global config
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://mind-juice.herokuapp.com/'
-
-const socket = io(url);
+const socket = io(config.BASE_URL);
 
 const GameMain: React.SFC = () => {
   const classes = useStyles();
@@ -31,7 +31,7 @@ const GameMain: React.SFC = () => {
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [players, setPlayers] = useState<Player[]>([]);
   const [game, setGame] = useState<Partial<Game>>({});
-  const [player, setPlayer] = useState('');
+  const [name, setPlayer] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,8 +44,13 @@ const GameMain: React.SFC = () => {
 
     // New player connected
     socket.on(EVENTS.PLAYER_CONNECT, (p: Player) => {
-      console.log('New player connected');
       setPlayers(players => [...players, p]);
+    });
+
+    // Player disconnected
+    socket.on(EVENTS.PLAYER_DISCONNECT, (p: Player) => {
+      console.log('Player disconnected', p);
+      setPlayers(players => players.filter(player => player.id !== p.id));
     });
 
     // Game has started
@@ -79,18 +84,16 @@ const GameMain: React.SFC = () => {
   };
 
   const Room = () => {
-    const link = window.location.href;
-
     return (
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <Typography variant="h5">
+          <Typography variant="h5" className="p-5">
             {game.name}
           </Typography>
           <List>
             {players.map(player => (
               <React.Fragment key={player.name}>
-                <ListItem button>
+                <ListItem button disabled={player.name === name}>
                   <ListItemIcon>
                     <PersonIcon />
                   </ListItemIcon>

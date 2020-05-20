@@ -17,6 +17,8 @@ import Home from '../../pages/Home';
 import GlobalState from '../../models/GlobalState';
 import { Context as StateContext, initialState } from '../../state';
 
+import '../../styles/tailwind.css';
+
 export default function App() {
   const [state, setGlobalState] = useState<GlobalState>(initialState);
 
