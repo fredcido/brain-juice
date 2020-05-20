@@ -8,6 +8,6 @@
   "scripts": {
     "predeploy": "lerna run build",
     "deploy": "gh-pages -d packages/frontend/build",
-    "build": "lerna run build"
+    "prod": "lerna run build"
   }
 }
