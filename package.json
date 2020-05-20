@@ -2,12 +2,41 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "commitizen": "^4.1.2",
+    "commitlint": "^8.3.5",
     "gh-pages": "^2.2.0",
-    "lerna": "^3.5.1"
+    "git-cz": "^4.5.0",
+    "husky": "^4.2.5",
+    "lerna": "^3.5.1",
+    "lint-staged": "^10.2.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "standard-version": "^8.0.0"
   },
   "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "commit": "git-cz",
+    "deploy": "npm-run-all deploy:*",
+    "deploy:frontend": "gh-pages -d packages/frontend/build",
+    "format": "prettier --write \"packages/**/*.{js,jsx}\"",
+    "lint-staged": "lint-staged",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "predeploy": "lerna run build",
-    "deploy": "gh-pages -d packages/frontend/build",
-    "build": "lerna run build"
+    "release": "standard-version",
+    "test": "lerna run test"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run format"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }

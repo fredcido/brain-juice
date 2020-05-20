@@ -19,6 +19,7 @@ const EVENTS = {
   GAME_START: 'game-start',
 };
 
+// TODO Consume global config
 const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://mind-juice.herokuapp.com/'
 
 const socket = io(url);
