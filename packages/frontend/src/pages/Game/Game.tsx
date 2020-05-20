@@ -19,7 +19,9 @@ const EVENTS = {
   GAME_START: 'game-start',
 };
 
-const socket = io('http://localhost:3000');
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://mind-juice.herokuapp.com/'
+
+const socket = io(url);
 
 const GameMain: React.SFC = () => {
   const classes = useStyles();
