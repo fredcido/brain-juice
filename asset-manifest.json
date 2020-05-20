@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/brain-juice/static/js/main.e3ff757e.chunk.js",
-    "main.js.map": "/brain-juice/static/js/main.e3ff757e.chunk.js.map",
+    "main.js": "/brain-juice/static/js/main.9d650ab1.chunk.js",
+    "main.js.map": "/brain-juice/static/js/main.9d650ab1.chunk.js.map",
     "runtime-main.js": "/brain-juice/static/js/runtime-main.df752332.js",
     "runtime-main.js.map": "/brain-juice/static/js/runtime-main.df752332.js.map",
-    "static/js/2.a38dcf9e.chunk.js": "/brain-juice/static/js/2.a38dcf9e.chunk.js",
-    "static/js/2.a38dcf9e.chunk.js.map": "/brain-juice/static/js/2.a38dcf9e.chunk.js.map",
+    "static/js/2.da69f614.chunk.js": "/brain-juice/static/js/2.da69f614.chunk.js",
+    "static/js/2.da69f614.chunk.js.map": "/brain-juice/static/js/2.da69f614.chunk.js.map",
     "index.html": "/brain-juice/index.html",
-    "precache-manifest.01bb847a7428cb05210356e7c93ee1fb.js": "/brain-juice/precache-manifest.01bb847a7428cb05210356e7c93ee1fb.js",
+    "precache-manifest.19c516a088bf62b283f1e54d97f1afa6.js": "/brain-juice/precache-manifest.19c516a088bf62b283f1e54d97f1afa6.js",
     "service-worker.js": "/brain-juice/service-worker.js",
-    "static/js/2.a38dcf9e.chunk.js.LICENSE.txt": "/brain-juice/static/js/2.a38dcf9e.chunk.js.LICENSE.txt"
+    "static/js/2.da69f614.chunk.js.LICENSE.txt": "/brain-juice/static/js/2.da69f614.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.df752332.js",
-    "static/js/2.a38dcf9e.chunk.js",
-    "static/js/main.e3ff757e.chunk.js"
+    "static/js/2.da69f614.chunk.js",
+    "static/js/main.9d650ab1.chunk.js"
   ]
 }
