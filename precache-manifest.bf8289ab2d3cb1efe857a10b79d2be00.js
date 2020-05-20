@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cab78feb1614d6a941d5354bb90400af",
+    "revision": "e67568dd8307ddd1ca098f0e4d9cb2e0",
     "url": "/brain-juice/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/brain-juice/static/js/2.da69f614.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "55b2dd512d1b500512a1",
-    "url": "/brain-juice/static/js/main.9d650ab1.chunk.js"
+    "revision": "fb62bad0ea7f470e3251",
+    "url": "/brain-juice/static/js/main.e3692457.chunk.js"
   },
   {
     "revision": "792723c38f52b30d8e86",
