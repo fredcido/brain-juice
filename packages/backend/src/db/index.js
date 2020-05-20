@@ -34,7 +34,7 @@ const getRepository = (TABLE) => {
   const get = async (id) => {
     await initDb();
     const data = db.get(TABLE).find({ id }).value();
-    return Promise.resolve(data);
+    return data ? Promise.resolve(data) : Promise.reject();
   };
 
   const getAll = async (filter = {}) => {

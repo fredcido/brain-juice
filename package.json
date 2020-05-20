@@ -24,7 +24,6 @@
     "format": "prettier --write \"packages/**/*.{js,jsx}\"",
     "lint-staged": "lint-staged",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "predeploy": "lerna run build",
     "release": "standard-version",
     "test": "lerna run test"
   },

@@ -16,7 +16,10 @@ module.exports = (TABLE) => {
 
   router.get('/:id', function (req, res) {
     const { id } = req.params;
-    repo.get(id).then((data) => res.json(data));
+    repo
+      .get(id)
+      .then((data) => res.json(data))
+      .catch(() => res.sendStatus(404));
   });
 
   router.post('/', function (req, res) {

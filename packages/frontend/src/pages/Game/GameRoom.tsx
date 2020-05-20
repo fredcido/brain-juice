@@ -3,7 +3,7 @@ import React from 'react';
 const GameRoom = () => {
   return (
     <div>
-      Game has started
+      <h4>Game has started</h4>
     </div>
   );
 }

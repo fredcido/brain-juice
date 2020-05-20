@@ -11,6 +11,7 @@ import TopBar from '../TopBar';
 
 // Pages
 import GameStart from '../../pages/GameStart';
+import GameEnter from '../../pages/GameEnter';
 import Game from '../../pages/Game';
 import Home from '../../pages/Home';
 
@@ -41,6 +42,9 @@ export default function App() {
             </Route>
             <Route path="/start">
               <GameStart />
+            </Route>
+            <Route path="/enter">
+              <GameEnter />
             </Route>
             <Route path="/">
               <Home />

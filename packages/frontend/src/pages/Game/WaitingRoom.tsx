@@ -10,12 +10,12 @@ const WaitingRoom: React.FunctionComponent<WaitingRoomProps> = ({ onStartGame, c
   const link = window.location.href;
   return (
     <div className="flex flex-col items-center space-y-10">
-      <Typography variant="h5">We are waiting for the players to join</Typography>
+      <Typography variant="h4">We are waiting for the players to join</Typography>
       <p>
         <img src={process.env.PUBLIC_URL + '/imgs/cat.gif'} alt="Cat gif" />
       </p>
       <p>
-        You can share this link with your friends to join <b>{link}</b>
+        <Typography variant="h5">You can share this link with your friends to join <b>{link}</b></Typography>
       </p>
       <p>
         <Button

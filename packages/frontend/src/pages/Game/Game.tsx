@@ -87,8 +87,8 @@ const GameMain: React.SFC = () => {
     return (
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <Typography variant="h5" className="p-5">
-            {game.name}
+          <Typography variant="h5" className="pt-5 pl-5 pb-3 border-0 border-b-2 border-gray-600">
+            Game: {game.name}
           </Typography>
           <List>
             {players.map(player => (
