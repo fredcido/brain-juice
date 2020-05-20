@@ -23,6 +23,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn install
-    - run: yarn bootstrap
+    - run: yarn bootstrap --no-ci
     - run: npm run build --if-present
     - run: npm deploy
