@@ -1,1 +1,1 @@
-web: DEBUG=backend:* node ./bin/www
+web: DEBUG=backend:* node packages/backend/bin/www
