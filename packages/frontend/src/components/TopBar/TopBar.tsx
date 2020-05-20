@@ -15,7 +15,7 @@ export default function TopBar() {
         <Toolbar>
           <Typography variant="h6">
             <Link to="/" className={classes.link}>
-              Mind Juice
+              Brain Juice
             </Link>
           </Typography>
         </Toolbar>
