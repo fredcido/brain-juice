@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/brain-juice/static/js/main.db55a43c.chunk.js",
-    "main.js.map": "/brain-juice/static/js/main.db55a43c.chunk.js.map",
+    "main.js": "/brain-juice/static/js/main.3cdf6d60.chunk.js",
+    "main.js.map": "/brain-juice/static/js/main.3cdf6d60.chunk.js.map",
     "runtime-main.js": "/brain-juice/static/js/runtime-main.08922942.js",
     "runtime-main.js.map": "/brain-juice/static/js/runtime-main.08922942.js.map",
     "static/js/2.774b3bdf.chunk.js": "/brain-juice/static/js/2.774b3bdf.chunk.js",
     "static/js/2.774b3bdf.chunk.js.map": "/brain-juice/static/js/2.774b3bdf.chunk.js.map",
     "index.html": "/brain-juice/index.html",
-    "precache-manifest.74d24bde8902afca8c7b783583dffe5f.js": "/brain-juice/precache-manifest.74d24bde8902afca8c7b783583dffe5f.js",
+    "precache-manifest.7e68abd345d9b72b0148e21abb27c49c.js": "/brain-juice/precache-manifest.7e68abd345d9b72b0148e21abb27c49c.js",
     "service-worker.js": "/brain-juice/service-worker.js",
     "static/js/2.774b3bdf.chunk.js.LICENSE.txt": "/brain-juice/static/js/2.774b3bdf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.08922942.js",
     "static/js/2.774b3bdf.chunk.js",
-    "static/js/main.db55a43c.chunk.js"
+    "static/js/main.3cdf6d60.chunk.js"
   ]
 }
