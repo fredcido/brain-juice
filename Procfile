@@ -1,0 +1,1 @@
+web: DEBUG=backend:* node packages/backend/bin/www

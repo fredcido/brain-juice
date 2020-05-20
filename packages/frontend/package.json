@@ -29,6 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage" : "https://fredcido.github.io/brain-juice/",
   "eslintConfig": {
     "extends": "react-app"
   },

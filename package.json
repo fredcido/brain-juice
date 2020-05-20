@@ -2,6 +2,12 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "lerna": "^3.5.1"
+  },
+  "scripts": {
+    "predeploy": "lerna run build",
+    "deploy": "gh-pages -d packages/frontend/build",
+    "build": "lerna run build"
   }
 }
