@@ -15,7 +15,7 @@ const initDb = async () => {
   } else {
     return Promise.resolve(db);
   }
-}
+};
 
 const getRepository = (TABLE) => {
   const add = async (data) => {
@@ -23,41 +23,41 @@ const getRepository = (TABLE) => {
     await db.get(TABLE).push(data).write();
     return get(data.id);
   };
-  
+
   const edit = async (id, data) => {
     await initDb();
     const item = await db.get(TABLE).find({ id });
     await item.assign(data).write();
     return get(id);
-  }
-  
+  };
+
   const get = async (id) => {
     await initDb();
     const data = db.get(TABLE).find({ id }).value();
     return Promise.resolve(data);
-  }
-  
+  };
+
   const getAll = async (filter = {}) => {
     await initDb();
     const data = db.get(TABLE).value() || [];
     return Promise.resolve(data);
-  }
-  
+  };
+
   const deleteItem = async (id) => {
     await initDb();
     return db.get(TABLE).remove({ id });
-  }
-  
+  };
+
   return {
     add,
     edit,
     get,
     getAll,
     deleteItem,
-  }
-}
+  };
+};
 
 module.exports = {
   db,
-  getRepository
+  getRepository,
 };

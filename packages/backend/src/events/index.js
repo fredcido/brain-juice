@@ -6,7 +6,7 @@ const EVENTS = {
   JOIN: 'join',
   PLAYER_CONNECT: 'player-connected',
   PLAYERS: 'players',
-  GAME_START: 'game-start'
+  GAME_START: 'game-start',
 };
 
 const register = (http) => {
@@ -14,7 +14,7 @@ const register = (http) => {
 
   const games = {};
 
-  const onJoin = socket => (data) => {
+  const onJoin = (socket) => (data) => {
     debug('new player connected', data);
     const { game, player } = data;
 
@@ -33,9 +33,9 @@ const register = (http) => {
     socket.emit(EVENTS.PLAYERS, games[game.id].players);
 
     debug('Players', games[game.id]);
-  }
+  };
 
-  const onGameStart = socket => (game) => {
+  const onGameStart = (socket) => (game) => {
     debug('Game has started', game);
     io.to(game.id).emit(EVENTS.GAME_START);
   };
