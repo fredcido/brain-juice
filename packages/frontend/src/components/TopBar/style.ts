@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { MindJuiceTheme } from '../App/App';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -8,9 +9,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   link: {
-    color: 'white',
+    color: MindJuiceTheme.palette.primary.main,
     textDecoration: 'none'
   },
 }));
+
 
 export default useStyles;

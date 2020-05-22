@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { ListItem, ListItemText, Divider, List, ListItemIcon, Typography } from '@material-ui/core';
+import {
+  ListItem,
+  ListItemText,  
+  List,  
+  ListItemAvatar,
+  Typography,
+  Avatar,
+  ListSubheader
+} from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { useParams } from "react-router";
@@ -139,25 +147,29 @@ const GameMain: React.SFC = () => {
   const Room = () => {
     return (
       <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <Typography variant="h5" className="pt-5 pl-5 pb-3 border-0 border-b-2 border-gray-600">
-            {isLoading ? <Skeleton variant="text" /> : <span>Game: {game?.name}</span>}
-          </Typography>
-          <List>
+        <Grid item xs={2}>
+          <List component="nav"            
+            aria-labelledby="nested-list-subheader"
+            subheader={
+              <ListSubheader component="div" id="nested-list-subheader">
+                {isLoading ? <Skeleton variant="text" /> : <span>Game: {game?.name}</span>}
+              </ListSubheader>
+            }>
             {sortByMe(players).map(player => (
               <React.Fragment key={player.name}>
                 <ListItem button disabled={amIThisPayer(player)}>
-                  <ListItemIcon>
-                    <PersonIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={player.name} />
+                  <ListItemAvatar>
+                    <Avatar>
+                      <PersonIcon />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={player.name} secondary={`#${player.id}`} />
                 </ListItem>
-                <Divider />
               </React.Fragment>
             ))}
           </List>
         </Grid>
-        <Grid item xs={9} className={classes.gameContainer}>
+        <Grid item xs={10} className={classes.gameContainer}>
           {isGameStarted ? <GameRules onUnderstandTheRule={onUnderstandTheRule} /> : <WaitingRoom onStartGame={handleGameStart} canStart={canStartGame()} />}
         </Grid>
       </Grid>
