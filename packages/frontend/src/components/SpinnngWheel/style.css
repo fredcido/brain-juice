@@ -3,8 +3,8 @@
   --wheel-size: 400px;
   --wheel-slice-spacing: 50px;
   --wheel-border-size: 5px;
-  --wheel-color: #3eda60;
-  --neutral-color: white;
+  --wheel-color: #8bc34a;
+  --neutral-color: #FFF;
   --PI: 3.14159265358979;
   --nb-item: 0;
   --item-nb: 0;
@@ -107,6 +107,7 @@
   /* texte */
   color: var(--neutral-color);
   text-align: right;
+  font-size: 1.5em;
   padding: 0 25px 0 50px;
   font-family: var(--wheel-font);
 }

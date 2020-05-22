@@ -159,9 +159,7 @@ const GameMain: React.SFC = () => {
               <React.Fragment key={player.name}>
                 <ListItem button disabled={amIThisPayer(player)}>
                   <ListItemAvatar>
-                    <Avatar>
-                      <PersonIcon />
-                    </Avatar>
+                    <Avatar>{player.name.charAt(0).toUpperCase()}</Avatar>
                   </ListItemAvatar>
                   <ListItemText primary={player.name} secondary={`#${player.id}`} />
                 </ListItem>
