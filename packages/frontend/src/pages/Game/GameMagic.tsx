@@ -35,7 +35,7 @@ const GameMagic: React.FC<GameMagicProps> = ({ players }) => {
           <Typography variant="h4" color="primary">
             {loading && <span>Loading...</span>}
             {selectedItem === -1 && !loading && <span>Click in wheel to start</span>}
-            {selectedItem > -1 && <span>Item Selected: <b>{options[selectedItem]}</b></span>}
+            {selectedItem > -1 && !loading &&  <span>Item Selected: <b>{options[selectedItem]}</b></span>}
           </Typography>
           <br />
           <SpinningWheel items={options} onSelectItem={onSelectItem} onLoading={onLoading} />
