@@ -3,6 +3,7 @@ const FileAsync = require('lowdb/adapters/FileAsync');
 
 const defaultValue = {
   games: [],
+  players: [],
 };
 
 let db;
@@ -43,6 +44,12 @@ const getRepository = (TABLE) => {
     return Promise.resolve(data);
   };
 
+  const getBy = async (filter = {}) => {
+    await initDb();
+    const data = db.get(TABLE).value(filter) || [];
+    return Promise.resolve(data);
+  };
+
   const deleteItem = async (id) => {
     await initDb();
     return db.get(TABLE).remove({ id });
@@ -53,6 +60,7 @@ const getRepository = (TABLE) => {
     edit,
     get,
     getAll,
+    getBy,
     deleteItem,
   };
 };

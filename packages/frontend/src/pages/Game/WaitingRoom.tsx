@@ -14,20 +14,20 @@ const WaitingRoom: React.FunctionComponent<WaitingRoomProps> = ({ onStartGame, c
       <p>
         <img src={process.env.PUBLIC_URL + '/imgs/cat.gif'} alt="Cat gif" />
       </p>
+      <Typography variant="h5">You can share this link with your friends to join <b>{link}</b></Typography>
       <p>
-        <Typography variant="h5">You can share this link with your friends to join <b>{link}</b></Typography>
-      </p>
-      <p>
-        <Button
-          type="button"
-          fullWidth
-          variant="contained"
-          color="primary"
-          disabled={canStart}
-          onClick={onStartGame}
-        >
-          Start the game
+        {canStart && (
+          <Button
+            type="button"
+            fullWidth
+            variant="contained"
+            color="primary"
+            disabled={!canStart}
+            onClick={onStartGame}
+          >
+            Start the game
           </Button>
+        )}
       </p>
     </div>
   );

@@ -12,10 +12,10 @@ export default function TopBar() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar color="secondary">
           <Typography variant="h6">
             <Link to="/" className={classes.link}>
-              Brain Juice
+              Mind Juice
             </Link>
           </Typography>
         </Toolbar>

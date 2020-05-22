@@ -1,9 +1,16 @@
 import * as React from 'react';
 import GlobalState from '../models/GlobalState';
+import GameStatus from '../models/GameStatus';
 
 const initialState: GlobalState = {
   game: {
-    name: ''
+    name: '',
+    status: GameStatus.PENDING,
+    moderator: {
+      id: '',
+      name: '',
+      joined: new Date()
+    }
   },
   players: [],
 }

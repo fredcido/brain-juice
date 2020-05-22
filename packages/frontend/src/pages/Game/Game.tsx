@@ -2,16 +2,21 @@ import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { ListItem, ListItemText, Divider, List, ListItemIcon, Typography } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
+import Skeleton from '@material-ui/lab/Skeleton';
 import { useParams } from "react-router";
 import io from 'socket.io-client';
+import shortid from 'shortid';
 
 import config from '../../helpers/config';
 import Player from '../../models/Player';
+import { useLocalStorage } from '../../helpers/hooks';
 import Game from '../../models/Game';
 import useStyles from './style';
 import * as service from '../../services/game';
 import WaitingRoom from './WaitingRoom';
-import GameRoom from './GameRoom';
+import GameRules from './GameRules';
+import GameWaiting from './GameWaiting';
+import GameMagic from './GameMagic';
 
 const EVENTS = {
   PLAYER_CONNECT: 'player-connected',
@@ -30,30 +35,80 @@ const GameMain: React.SFC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [players, setPlayers] = useState<Player[]>([]);
-  const [game, setGame] = useState<Partial<Game>>({});
-  const [name, setPlayer] = useState('');
+  const [game, setGame] = useState<Game>();
+  const [currentPlayer, setPlayerId] = useLocalStorage('player_id');
+  const [currentPlayerName, setPlayerName] = useLocalStorage('player_name');
+  const [doesUnderstandRule, setUnderStandRules] = useLocalStorage('understand_rules');
+
+  const canStartGame = () => {
+    return players.length > 1 && amIThisPayer(game?.moderator);
+  }
+
+  const amIThisPayer = (player: Player | undefined) => {
+    return player?.id === currentPlayer;
+  }
+
+  const sortByMe = (players: Player[]) => {
+    const sortIt = (a: Player, b: Player) => {
+      if (a.id === currentPlayer) {
+        return -1;
+      }
+
+      if (b.id === currentPlayer) {
+        return 1;
+      }
+
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
+
+      let comparison = 0;
+      if (nameA > nameB) {
+        comparison = 1;
+      } else if (nameA < nameB) {
+        comparison = -1;
+      }
+      return comparison;
+    };
+
+    return players.sort(sortIt);
+  }
+
+  const onUnderstandTheRule = () => {
+    game && game.id && setUnderStandRules(game.id);
+  }
 
   useEffect(() => {
     setIsLoading(true);
 
-    // All players
+    console.log('currenPlayer', currentPlayer);
+    if (!currentPlayer) {
+      const newId = shortid.generate();
+      setPlayerId(newId);
+    }
+
+    if (!currentPlayerName) {
+      const name = 'Player ' + (new Date()).getTime();
+      setPlayerName(name);
+    }
+
+    // Listen to all players
     socket.on(EVENTS.PLAYERS, (players: Player[]) => {
       console.log('Players connected', players);
       setPlayers(players);
     })
 
-    // New player connected
+    // Listen to new player connected
     socket.on(EVENTS.PLAYER_CONNECT, (p: Player) => {
       setPlayers(players => [...players, p]);
     });
 
-    // Player disconnected
+    // List to player disconnected
     socket.on(EVENTS.PLAYER_DISCONNECT, (p: Player) => {
       console.log('Player disconnected', p);
       setPlayers(players => players.filter(player => player.id !== p.id));
     });
 
-    // Game has started
+    // Listen to game has started
     socket.on(EVENTS.GAME_START, () => {
       console.log('Game has started');
       setIsGameStarted(true);
@@ -63,37 +118,35 @@ const GameMain: React.SFC = () => {
       setIsLoading(false);
       setGame(game);
 
-      const name = 'Player ' + (new Date()).getTime();
-      setPlayer(name);
-
       // Inform backend of player connected
       socket.emit(EVENTS.JOIN, {
         game,
         player: {
-          name,
+          name: currentPlayerName,
+          id: currentPlayer,
         }
       });
 
     }).catch(() => {
-      setIsLoading(false);
+      // setIsLoading(false);
     })
   }, [id]);
 
   function handleGameStart() {
     socket.emit(EVENTS.GAME_START, game);
-  };
+  }
 
   const Room = () => {
     return (
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Typography variant="h5" className="pt-5 pl-5 pb-3 border-0 border-b-2 border-gray-600">
-            Game: {game.name}
+            {isLoading ? <Skeleton variant="text" /> : <span>Game: {game?.name}</span>}
           </Typography>
           <List>
-            {players.map(player => (
+            {sortByMe(players).map(player => (
               <React.Fragment key={player.name}>
-                <ListItem button disabled={player.name === name}>
+                <ListItem button disabled={amIThisPayer(player)}>
                   <ListItemIcon>
                     <PersonIcon />
                   </ListItemIcon>
@@ -105,15 +158,19 @@ const GameMain: React.SFC = () => {
           </List>
         </Grid>
         <Grid item xs={9} className={classes.gameContainer}>
-          {isGameStarted ? <GameRoom /> : <WaitingRoom onStartGame={handleGameStart} canStart={players.length < 2} />}
+          {isGameStarted ? <GameRules onUnderstandTheRule={onUnderstandTheRule} /> : <WaitingRoom onStartGame={handleGameStart} canStart={canStartGame()} />}
         </Grid>
       </Grid>
     );
   };
 
+  if (doesUnderstandRule && doesUnderstandRule === game?.id) {
+    return <GameMagic players={players} game={game} />;
+  }
+
   return (
     <div className={classes.root}>
-      {isLoading || <Room />}
+      {isLoading ? <GameWaiting /> : <Room />}
     </div>
   );
 }
