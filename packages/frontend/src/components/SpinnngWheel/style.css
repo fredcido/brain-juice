@@ -1,4 +1,5 @@
-:root {
+/* Conteneur de la roue = cercle rose extérieur */
+.wheel-container {
   --wheel-font: 'Lato', 'Quicksand', sans-serif;
   --wheel-size: 400px;
   --wheel-slice-spacing: 50px;
@@ -12,10 +13,7 @@
   --nb-turn: 5;
   --spinning-duration: 4s;
   --reset-duration: 0.25s;
-}
 
-/* Conteneur de la roue = cercle rose extérieur */
-.wheel-container {
   display: block;
   position: relative;
   box-sizing: content-box;
