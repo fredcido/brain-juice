@@ -47,6 +47,7 @@ export default function GameStart() {
       moderator: {
         name: data.player,
         id: playerId,
+        avatar: data.player,
         joined: new Date()
       }
     };

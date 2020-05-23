@@ -1,18 +1,18 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import {
+  AppBar,
+  Toolbar,
+  Typography
+} from '@material-ui/core';
 import { Link } from 'react-router-dom';
-
 import useStyles from './style';
 
-export default function TopBar() {
+const TopBar = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar color="secondary">
+      <AppBar elevation={0} position="static" color="transparent" className={classes.root}>
+        <Toolbar>
           <Typography variant="h6">
             <Link to="/" className={classes.link}>
               Mind Juice
@@ -20,6 +20,7 @@ export default function TopBar() {
           </Typography>
         </Toolbar>
       </AppBar>
-    </div>
   );
 }
+
+export default TopBar;

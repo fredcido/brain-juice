@@ -53,7 +53,7 @@ export default function GameEnter() {
           type="submit"
           fullWidth
           variant="contained"
-          color="primary"
+          color="secondary"
           disabled={isSaving}
         >
           Enter game
