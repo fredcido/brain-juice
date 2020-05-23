@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Grid from '@material-ui/core/Grid';
 import {
   ListItem,
   ListItemText,  
@@ -7,14 +6,12 @@ import {
   ListItemAvatar,
   Typography,
   Avatar,
-  ListSubheader
+  ListSubheader,
+  Grid
 } from '@material-ui/core';
-import PersonIcon from '@material-ui/icons/Person';
-import Skeleton from '@material-ui/lab/Skeleton';
 import { useParams } from "react-router";
 import io from 'socket.io-client';
 import shortid from 'shortid';
-
 import config from '../../helpers/config';
 import Player from '../../models/Player';
 import { useLocalStorage } from '../../helpers/hooks';
@@ -25,6 +22,7 @@ import WaitingRoom from './WaitingRoom';
 import GameRules from './GameRules';
 import GameWaiting from './GameWaiting';
 import GameMagic from './GameMagic';
+import PlayersList from '../../components/Player/PlayersList';
 
 const EVENTS = {
   PLAYER_CONNECT: 'player-connected',
@@ -54,31 +52,6 @@ const GameMain: React.SFC = () => {
 
   const amIThisPayer = (player: Player | undefined) => {
     return player?.id === currentPlayer;
-  }
-
-  const sortByMe = (players: Player[]) => {
-    const sortIt = (a: Player, b: Player) => {
-      if (a.id === currentPlayer) {
-        return -1;
-      }
-
-      if (b.id === currentPlayer) {
-        return 1;
-      }
-
-      const nameA = a.name.toUpperCase();
-      const nameB = b.name.toUpperCase();
-
-      let comparison = 0;
-      if (nameA > nameB) {
-        comparison = 1;
-      } else if (nameA < nameB) {
-        comparison = -1;
-      }
-      return comparison;
-    };
-
-    return players.sort(sortIt);
   }
 
   const onUnderstandTheRule = () => {
@@ -148,24 +121,7 @@ const GameMain: React.SFC = () => {
     return (
       <Grid container spacing={2}>
         <Grid item xs={2}>
-          <List component="nav"            
-            aria-labelledby="nested-list-subheader"
-            subheader={
-              <ListSubheader component="div" id="nested-list-subheader">
-                {isLoading ? <Skeleton variant="text" /> : <span>Game: {game?.name}</span>}
-              </ListSubheader>
-            }>
-            {sortByMe(players).map(player => (
-              <React.Fragment key={player.name}>
-                <ListItem button disabled={amIThisPayer(player)}>
-                  <ListItemAvatar>
-                    <Avatar>{player.name.charAt(0).toUpperCase()}</Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary={player.name} secondary={`#${player.id}`} />
-                </ListItem>
-              </React.Fragment>
-            ))}
-          </List>
+          <PlayersList gameName={game?.name} players={players} currentPlayer={currentPlayer} isLoading={isLoading} />
         </Grid>
         <Grid item xs={10} className={classes.gameContainer}>
           {isGameStarted ? <GameRules onUnderstandTheRule={onUnderstandTheRule} /> : <WaitingRoom onStartGame={handleGameStart} canStart={canStartGame()} />}
